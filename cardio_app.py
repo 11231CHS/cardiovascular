@@ -576,7 +576,7 @@ elif st.session_state["page"] == "input":
 
     # ── 열 3 ──
     with r1c3:
-        st.markdown('<p class="input-lbl">전반적 건강 상태</p>', unsafe_allow_html=True)
+        st.markdown('<p class="input-lbl">전반적 건강 상태(자신이 생각하기에)</p>', unsafe_allow_html=True)
         health_opts = {
             "1 – Poor (매우 나쁨)": 1,
             "2 – Fair (나쁨)": 2,
