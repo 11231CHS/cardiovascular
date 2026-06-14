@@ -117,23 +117,6 @@ CLUSTER_META = {
         ],
     },
     2: {
-        "name": "초고도비만 대사증후군 고위험군",
-        "emoji": "⚠️",
-        "accent": "#DC2626",
-        "bg":     "#FEF2F2",
-        "border": "#FECACA",
-        "text":   "#7F1D1D",
-        "badge_bg": "#FEE2E2",
-        "risk":   "매우 높은 위험",
-        "desc":   "나이는 중장년층이며, BMI가 매우 높고(평균 37 이상으로 고도비만) 전반적 건강 점수가 가장 낮은 고위험 그룹입니다.",
-        "advice": [
-            ("🏥 즉시 전문의 상담",       "BMI 35 이상은 의료적 개입이 필요합니다. 내분비·비만 전문의를 찾아가세요."),
-            ("🥦 칼로리 조절 식단",       "단백질·식이섬유 위주로 전환해 주 0.5kg 내외 감량을 목표로 하세요."),
-            ("🚶 저강도 운동부터",        "수중 걷기, 자전거 등 저충격 운동부터 시작하세요."),
-            ("📉 대사지표 모니터링",      "혈압·공복혈당·중성지방·HDL을 3개월마다 점검하세요."),
-        ],
-    },
-    3: {
         "name": "고령 만성질환 취약군",
         "emoji": "🏥",
         "accent": "#7C3AED",
@@ -150,6 +133,23 @@ CLUSTER_META = {
             ("👨‍👩‍👧 사회적 연결 유지",   "가족·지역사회 활동에 참여해 인지·심혈관 건강을 지키세요."),
         ],
     },
+    3: {
+        "name": "초고도비만 대사증후군 고위험군",
+        "emoji": "⚠️",
+        "accent": "#DC2626",
+        "bg":     "#FEF2F2",
+        "border": "#FECACA",
+        "text":   "#7F1D1D",
+        "badge_bg": "#FEE2E2",
+        "risk":   "매우 높은 위험",
+        "desc":   "나이는 중장년층이며, BMI가 매우 높고(평균 37 이상으로 고도비만) 전반적 건강 점수가 가장 낮은 고위험 그룹입니다.",
+        "advice": [
+            ("🏥 즉시 전문의 상담",       "BMI 35 이상은 의료적 개입이 필요합니다. 내분비·비만 전문의를 찾아가세요."),
+            ("🥦 칼로리 조절 식단",       "단백질·식이섬유 위주로 전환해 주 0.5kg 내외 감량을 목표로 하세요."),
+            ("🚶 저강도 운동부터",        "수중 걷기, 자전거 등 저충격 운동부터 시작하세요."),
+            ("📉 대사지표 모니터링",      "혈압·공복혈당·중성지방·HDL을 3개월마다 점검하세요."),
+        ],
+    },
 }
 
 AGE_LABELS = {
@@ -159,7 +159,7 @@ AGE_LABELS = {
 }
 
 CHART_COLORS = {
-    0: "#D97706", 1: "#059669", 2: "#DC2626", 3: "#7C3AED",
+    0: "#D97706", 1: "#059669", 2: "#7C3AED", 3: "#DC2626",
 }
 
 def age_to_category(age):
@@ -192,12 +192,13 @@ st.markdown("""
 [data-testid="collapsedControl"],
 [data-testid="stSidebarNav"]          { display: none !important; }
 
-/* ── 전체 배경·폰트 (라이트) ── */
+/* ── 전체 배경·폰트 (라이트 그라디에이션) ── */
 html, body,
 [data-testid="stAppViewContainer"],
 [data-testid="stAppViewContainer"] > .main,
 [data-testid="stMain"] > div         {
-    background-color: #F8F7F4 !important;
+    background: linear-gradient(135deg, #F8F7F4 0%, #EEF0F8 40%, #F4EFF8 70%, #F8F4F0 100%) !important;
+    background-attachment: fixed !important;
     color: #1C1917 !important;
     font-family: 'DM Sans', sans-serif !important;
 }
@@ -400,8 +401,8 @@ div[data-baseweb="select"] > div {
     border-radius: 10px !important;
     font-family: 'DM Sans', sans-serif !important;
     font-weight: 600 !important;
-    font-size: 0.95rem !important;
-    padding: 13px 0 !important;
+    font-size: 1.05rem !important;
+    padding: 16px 0 !important;
     width: 100% !important;
     letter-spacing: 0.2px !important;
     transition: background 0.18s ease !important;
@@ -576,7 +577,7 @@ elif st.session_state["page"] == "input":
 
     # ── 열 3 ──
     with r1c3:
-        st.markdown('<p class="input-lbl">전반적 건강 상태(자신이 생각하기에)</p>', unsafe_allow_html=True)
+        st.markdown('<p class="input-lbl">전반적 건강 상태</p>', unsafe_allow_html=True)
         health_opts = {
             "1 – Poor (매우 나쁨)": 1,
             "2 – Fair (나쁨)": 2,
@@ -826,4 +827,3 @@ elif st.session_state["page"] == "result":
     with b2:
         if st.button("🏠 처음으로", key="re_land"):
             go_to("landing")
-    
