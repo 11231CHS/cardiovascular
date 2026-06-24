@@ -186,11 +186,12 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
 
 /* ── Streamlit 기본 UI 제거 ── */
-#MainMenu, footer, header,
-[data-testid="stToolbar"],
+#MainMenu, footer,
 [data-testid="stDecoration"],
 [data-testid="collapsedControl"],
 [data-testid="stSidebarNav"]          { display: none !important; }
+/* 헤더·툴바 살려서 깃허브 로고 표시 */
+header, [data-testid="stToolbar"]     { display: flex !important; visibility: visible !important; }
 
 /* ── 전체 배경·폰트 (라이트 그라디에이션) ── */
 html, body,
